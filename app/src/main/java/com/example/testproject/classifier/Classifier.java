@@ -41,10 +41,18 @@ public class Classifier {
         }
 
         try {
-            interpreter = new Interpreter(
-                    FileUtil.loadMappedFile(context, MODEL_FILE_NAME),
-                    new Interpreter.Options().setNumThreads(numThreads).addDelegate(delegate)
-            );
+            if(delegate == null){
+                interpreter = new Interpreter(
+                        FileUtil.loadMappedFile(context, MODEL_FILE_NAME),
+                        new Interpreter.Options().setNumThreads(numThreads)
+                );
+            }else{
+                interpreter = new Interpreter(
+                        FileUtil.loadMappedFile(context, MODEL_FILE_NAME),
+                        new Interpreter.Options().setNumThreads(numThreads).addDelegate(delegate)
+                );
+            }
+
         } catch (IOException e) {
             // IOException 처리
             e.printStackTrace();
