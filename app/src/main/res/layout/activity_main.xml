@@ -7,102 +7,93 @@
     android:background="@drawable/main_wallpaper"
     tools:context=".MainActivity">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/main_wallpaper"
-        android:orientation="vertical"
-        android:padding="16dp"
-        tools:context="com.example.testproject.MainActivity"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
 
-        <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            style="@style/ResultText"
+            android:text="@string/prediction" />
+
+        <TextView
+            android:id="@+id/tv_prediction"
+            style="@style/ResultText"
+            android:text="@string/empty"
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            tools:text="1" />
+
+        <TableRow>
 
             <TextView
                 style="@style/ResultText"
-                android:text="@string/prediction" />
+                android:text="@string/probability" />
 
             <TextView
-                android:id="@+id/tv_prediction"
+                style="@style/ResultText"
+                android:text="@string/timecost" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/tv_probability"
                 style="@style/ResultText"
                 android:text="@string/empty"
                 android:textColor="@android:color/black"
-                android:textSize="24sp"
-                tools:text="1" />
+                tools:text="0.9" />
 
-            <TableRow>
+            <TextView
+                android:id="@+id/tv_timecost"
+                style="@style/ResultText"
+                android:text="@string/empty"
+                android:textColor="@android:color/black"
+                tools:text="10ms" />
 
-                <TextView
-                    style="@style/ResultText"
-                    android:text="@string/probability" />
+        </TableRow>
 
-                <TextView
-                    style="@style/ResultText"
-                    android:text="@string/timecost" />
+    </TableLayout>
 
-            </TableRow>
+    <com.nex3z.fingerpaintview.FingerPaintView
+        android:id="@+id/fpv_paint"
+        android:layout_marginTop="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
 
-            <TableRow>
-
-                <TextView
-                    android:id="@+id/tv_probability"
-                    style="@style/ResultText"
-                    android:text="@string/empty"
-                    android:textColor="@android:color/black"
-                    tools:text="0.9" />
-
-                <TextView
-                    android:id="@+id/tv_timecost"
-                    style="@style/ResultText"
-                    android:text="@string/empty"
-                    android:textColor="@android:color/black"
-                    tools:text="10ms" />
-
-            </TableRow>
-
-        </TableLayout>
-
-        <com.nex3z.fingerpaintview.FingerPaintView
-            android:id="@+id/fpv_paint"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:foreground="@drawable/shape_rect_border" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btn_detect"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/detect" />
-
-            <Button
-                android:id="@+id/btn_clear"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/clear" />
-
-        </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <Button
-            android:id="@+id/button_bottom_sheet"
-            android:layout_width="wrap_content"
+            android:id="@+id/btn_detect"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:layout_weight="1"
+            android:text="@string/detect" />
+
+        <Button
+            android:id="@+id/btn_clear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/clear" />
 
     </LinearLayout>
+
+<!--        <Button-->
+<!--            android:id="@+id/button_bottom_sheet"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Button" />-->
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
