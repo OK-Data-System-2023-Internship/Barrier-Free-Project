@@ -1,26 +1,19 @@
 package com.example.testproject;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-
 import com.example.testproject.databinding.ActivityMainBinding;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
 import android.graphics.Bitmap;
-import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.testproject.classifier.Classifier;
 import com.example.testproject.classifier.Recognition;
-import com.example.testproject.databinding.ActivityMainBinding;
-
-import java.io.IOException;
+import com.nex3z.fingerpaintview.FingerPaintView;
 
 public class MainActivity extends AppCompatActivity {
     private Classifier classifier;
@@ -53,18 +46,42 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initClassifier() {
-//        try {
         classifier = new Classifier(this);
         Log.v(LOG_TAG, "Classifier initialized");
-//        } catch (IOException e) {
-//            Toast.makeText(this, R.string.failed_to_create_classifier, Toast.LENGTH_LONG).show();
-//            Log.e(LOG_TAG, "init(): Failed to create Classifier", e);
-//        }
     }
 
     private void initView() {
         binding.btnDetect.setOnClickListener(v -> onDetectClick());
         binding.btnClear.setOnClickListener(v -> clearResult());
+
+        FingerPaintView fingerPaintView = findViewById(R.id.fpv_paint);
+        fingerPaintView.setOnTouchListener(new View.OnTouchListener(){
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                int action = event.getActionMasked();
+
+                switch (action) {
+                    case MotionEvent.ACTION_DOWN:
+                        // 사용자가 화면에 터치했을 때의 처리
+                        Log.v("touch event", "사용자가 화면에 터치했을 때의 처리");
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        // 사용자가 화면을 터치한 채로 움직일 때의 처리
+                        Log.v("touch event", "사용자가 화면을 터치한 채로 움직일 때의 처리");
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        // 사용자가 터치를 떼었을 때의 처리
+                        Log.v("touch event", "사용자가 터치를 떼었을 때의 처리");
+                        break;
+                    case MotionEvent.ACTION_CANCEL:
+                        // 터치 이벤트가 취소되었을 때의 처리
+                        Log.v("touch event", "터치 이벤트가 취소되었을 때의 처리");
+                        break;
+                }
+                return true;
+            }
+
+        });
     }
 
     private void onDetectClick() {
@@ -90,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
                 result.getTimeCost()
         ));
     }
+
 
     private void clearResult() {
         binding.fpvPaint.clear();
