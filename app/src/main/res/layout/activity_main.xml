@@ -58,12 +58,14 @@
 
     </TableLayout>
 
-    <com.nex3z.fingerpaintview.FingerPaintView
+    <com.example.testproject.FingerPaintView
         android:id="@+id/fpv_paint"
-        android:layout_marginTop="100dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
+        android:layout_marginTop="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
 
     <LinearLayout

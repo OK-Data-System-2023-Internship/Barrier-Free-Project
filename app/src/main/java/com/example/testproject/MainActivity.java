@@ -13,7 +13,6 @@ import android.widget.Toast;
 
 import com.example.testproject.classifier.Classifier;
 import com.example.testproject.classifier.Recognition;
-import com.nex3z.fingerpaintview.FingerPaintView;
 
 public class MainActivity extends AppCompatActivity {
     private Classifier classifier;
@@ -54,34 +53,34 @@ public class MainActivity extends AppCompatActivity {
         binding.btnDetect.setOnClickListener(v -> onDetectClick());
         binding.btnClear.setOnClickListener(v -> clearResult());
 
-        FingerPaintView fingerPaintView = findViewById(R.id.fpv_paint);
-        fingerPaintView.setOnTouchListener(new View.OnTouchListener(){
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                int action = event.getActionMasked();
-
-                switch (action) {
-                    case MotionEvent.ACTION_DOWN:
-                        // 사용자가 화면에 터치했을 때의 처리
-                        Log.v("touch event", "사용자가 화면에 터치했을 때의 처리");
-                        break;
-                    case MotionEvent.ACTION_MOVE:
-                        // 사용자가 화면을 터치한 채로 움직일 때의 처리
-                        Log.v("touch event", "사용자가 화면을 터치한 채로 움직일 때의 처리");
-                        break;
-                    case MotionEvent.ACTION_UP:
-                        // 사용자가 터치를 떼었을 때의 처리
-                        Log.v("touch event", "사용자가 터치를 떼었을 때의 처리");
-                        break;
-                    case MotionEvent.ACTION_CANCEL:
-                        // 터치 이벤트가 취소되었을 때의 처리
-                        Log.v("touch event", "터치 이벤트가 취소되었을 때의 처리");
-                        break;
-                }
-                return true;
-            }
-
-        });
+//        FingerPaintView fingerPaintView = findViewById(R.id.fpv_paint);
+//        fingerPaintView.setOnTouchListener(new View.OnTouchListener(){
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                int action = event.getActionMasked();
+//
+//                switch (action) {
+//                    case MotionEvent.ACTION_DOWN:
+//                        // 사용자가 화면에 터치했을 때의 처리
+//                        Log.v("touch event", "사용자가 화면에 터치했을 때의 처리");
+//                        break;
+//                    case MotionEvent.ACTION_MOVE:
+//                        // 사용자가 화면을 터치한 채로 움직일 때의 처리
+//                        Log.v("touch event", "사용자가 화면을 터치한 채로 움직일 때의 처리");
+//                        break;
+//                    case MotionEvent.ACTION_UP:
+//                        // 사용자가 터치를 떼었을 때의 처리
+//                        Log.v("touch event", "사용자가 터치를 떼었을 때의 처리");
+//                        break;
+//                    case MotionEvent.ACTION_CANCEL:
+//                        // 터치 이벤트가 취소되었을 때의 처리
+//                        Log.v("touch event", "터치 이벤트가 취소되었을 때의 처리");
+//                        break;
+//                }
+//                return true;
+//            }
+//
+//        });
     }
 
     private void onDetectClick() {
