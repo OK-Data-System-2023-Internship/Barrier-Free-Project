@@ -3,7 +3,9 @@ package com.example.testproject;
 import android.content.Context;
 import android.graphics.*;
 import android.graphics.drawable.Drawable;
+import android.os.Handler;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -18,15 +20,27 @@ public class FingerPaintView extends View {
     private float penY = 0f;
     private Paint pen = buildDefaultPen();
     private boolean empty = true;
+    private OnWriteEventListener eventListener;
+    private final long WRITE_TIME = 1000;
 
+    private final Handler timerHandler = new Handler();
     public boolean isEmpty () {
         return empty;
     }
 
-    public FingerPaintView(Context context, AttributeSet attrs) {
-        super(context, attrs);
-    }
+    public FingerPaintView(Context context, AttributeSet attrs) {super(context, attrs);}
 
+    private Runnable logRunnable = new Runnable() {
+        @Override
+        public void run() {
+            eventListener.onWriteFinish();
+            Log.v("FingerPaintView",  WRITE_TIME + "초가 지난 후 로그 찍힘");
+        }
+    };
+
+    public void setCustomEventListener(OnWriteEventListener eventListener) {
+        this.eventListener = eventListener;
+    }
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
@@ -49,6 +63,7 @@ public class FingerPaintView extends View {
             case MotionEvent.ACTION_DOWN:
                 onTouchStart(event.getX(), event.getY());
                 invalidate();
+                timerHandler.removeCallbacks(logRunnable);
                 break;
             case MotionEvent.ACTION_MOVE:
                 onTouchMove(event.getX(), event.getY());
@@ -58,6 +73,7 @@ public class FingerPaintView extends View {
                 onTouchUp();
                 performClick();
                 invalidate();
+                timerHandler.postDelayed(logRunnable, WRITE_TIME);
                 break;
         }
         super.onTouchEvent(event);
