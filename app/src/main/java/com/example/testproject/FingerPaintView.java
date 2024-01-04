@@ -33,8 +33,8 @@ public class FingerPaintView extends View {
     private Runnable logRunnable = new Runnable() {
         @Override
         public void run() {
+            Log.v("FingerPaintView",  WRITE_TIME + "밀리초 경과");
             eventListener.onWriteFinish();
-            Log.v("FingerPaintView",  WRITE_TIME + "초가 지난 후 로그 찍힘");
         }
     };
 

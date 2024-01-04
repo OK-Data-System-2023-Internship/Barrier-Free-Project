@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onWriteFinish() {
                 Recognition result = onDetectImage();
-                Log.v("Main-onWriteFinish", String.valueOf(result.getLabel())+"인식");
+                Log.v("Main-onWriteFinish", String.valueOf(result.getLabel())+"인식됐고, 확률은 "+String.valueOf(result.getConfidence()));
                 fingerPaintView.clear();
             }
         });
@@ -76,22 +76,6 @@ public class MainActivity extends AppCompatActivity {
         return result;
     }
 
-    private void renderResult(Recognition result) {
-        binding.tvPrediction.setText(String.valueOf(result.getLabel()));
-        binding.tvProbability.setText(String.valueOf(result.getConfidence()));
-        binding.tvTimecost.setText(String.format(
-                getString(R.string.timecost_value),
-                result.getTimeCost()
-        ));
-    }
-
-
-    private void clearResult() {
-        binding.fpvPaint.clear();
-        binding.tvPrediction.setText(R.string.empty);
-        binding.tvProbability.setText(R.string.empty);
-        binding.tvTimecost.setText(R.string.empty);
-    }
     @Override
     protected void onDestroy() {
         super.onDestroy();
