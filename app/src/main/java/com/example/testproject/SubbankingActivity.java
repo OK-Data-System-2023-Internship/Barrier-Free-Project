@@ -21,22 +21,6 @@ public class SubbankingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_subbanking);
-//
-////        Log.e("SubbankingActivity", "Moved to SubActivity");
-//
-//        View bottomSheetView = getLayoutInflater().inflate(R.layout.bottom_sheet, null);
-//        final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
-//        bottomSheetDialog.setContentView(bottomSheetView);
-//
-//        Button button2 = findViewById(R.id.button_bottom_sheet);
-//        button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                bottomSheetDialog.show();
-//            }
-//        });
-
         
         // 바인딩 객체 초기화
         binding = ActivitySubbankingBinding.inflate(getLayoutInflater());
@@ -52,13 +36,26 @@ public class SubbankingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // 버튼 클릭 확인 로그
-                Log.e("SubbankingActivity", "버튼이 클릭되었습니다!");
+                Log.e("SubbankingActivity", "계좌입력 버튼이 클릭되었습니다!");
 
                 // 버튼 클릭 시 BottomSheet 올라오기
                 bottomSheetDialog.show();
             }
         });
 
+
+        binding.button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 버튼 클릭 확인 로그
+                Log.e("SubbankingActivity", "확인 버튼이 클릭되었습니다!");
+
+                // 버튼 클릭 시 ConfirmActivity 페이지로 이동
+                // 인텐트 생성 및 ConfirmActivity 시작
+                Intent intent = new Intent(SubbankingActivity.this, ConfirmActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
     }

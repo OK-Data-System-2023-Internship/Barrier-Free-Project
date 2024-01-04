@@ -16,6 +16,9 @@
         <activity android:name=".SubbankingActivity">
         </activity>
 
+        <activity android:name=".ConfirmActivity">
+        </activity>
+
         <activity
             android:name=".BankingActivity"
             android:exported="true">
