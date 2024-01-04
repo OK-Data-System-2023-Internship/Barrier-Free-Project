@@ -6,6 +6,8 @@ import com.example.testproject.databinding.ActivityMainBinding;
 
 import android.graphics.Bitmap;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.testproject.classifier.Classifier;
@@ -37,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private void initView() {
         FingerPaintView fingerPaintView = findViewById(R.id.fpv_paint);
         fingerPaintView.setBackgroundResource(R.drawable.draw_layout);
+
         fingerPaintView.setCustomEventListener(new OnWriteEventListener() {
             @Override
             public void onWriteFinish() {
@@ -45,7 +48,49 @@ public class MainActivity extends AppCompatActivity {
                 fingerPaintView.clear();
             }
         });
-    }
+        fingerPaintView.post(new Runnable() {
+            @Override
+            public void run() {
+                float viewHeight = fingerPaintView.getHeight();
+                Log.v("main",viewHeight+"높이 입니다");
+                fingerPaintView.setTranslationY(viewHeight);
+
+            }
+        });
+
+        Button btnMount = findViewById(R.id.btn_mount);
+        Button btnUnMount = findViewById(R.id.btn_unmount);
+
+        btnMount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onMountDrawBoard(fingerPaintView);
+            }
+        });
+
+        btnUnMount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onUnmountDrawBoard(fingerPaintView);
+            }
+        });
+
+    };
+
+    public void onMountDrawBoard(FingerPaintView fingerPaintView) {
+        float viewHeight = fingerPaintView.getHeight();
+        fingerPaintView.animate()
+                .translationY(0) // 뷰를 원래 위치로 이동시킵니다.
+                .start(); // 애니메이션 시작
+    };
+
+    public void onUnmountDrawBoard(FingerPaintView fingerPaintView) {
+        float viewHeight = fingerPaintView.getHeight();
+        fingerPaintView.animate()
+                .translationY(viewHeight) // 뷰를 원래 위치로 이동시킵니다.
+                .start(); // 애니메이션 시작
+    };
+
 
     private Recognition onDetectImage() {
         if (classifier == null) {

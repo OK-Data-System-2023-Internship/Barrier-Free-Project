@@ -19,8 +19,11 @@
         <activity android:name=".ConfirmActivity">
         </activity>
 
+        <activity android:name=".BankingActivity">
+        </activity>
+
         <activity
-            android:name=".BankingActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
