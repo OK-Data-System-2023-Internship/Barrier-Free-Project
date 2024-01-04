@@ -1,6 +1,8 @@
 package com.example.testproject;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,8 +25,14 @@ public class BankingActivity extends AppCompatActivity {
         binding.button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // 버튼 클릭 시 수행할 작업
+                // 버튼 클릭 확인 로그
+                Log.e("BankingActivity", "버튼이 클릭되었습니다!");
 
+
+                // 버튼 클릭 시 BankingActivity2 페이지로 이동
+                // 인텐트 생성 및 BankingActivity2 시작
+                Intent intent = new Intent(BankingActivity.this, SubBankingActivity.class);
+                startActivity(intent);
             }
         });
     }

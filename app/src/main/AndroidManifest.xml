@@ -12,8 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TestProject"
         tools:targetApi="31">
+
         <activity
-            android:name=".MainActivity"
+            android:name=".SubBankingActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".BankingActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
