@@ -29,9 +29,9 @@ public class BankingActivity extends AppCompatActivity {
                 Log.e("BankingActivity", "버튼이 클릭되었습니다!");
 
 
-                // 버튼 클릭 시 BankingActivity2 페이지로 이동
-                // 인텐트 생성 및 BankingActivity2 시작
-                Intent intent = new Intent(BankingActivity.this, SubBankingActivity.class);
+                // 버튼 클릭 시 SubbankingActivity 페이지로 이동
+                // 인텐트 생성 및 SubbankingActivity 시작
+                Intent intent = new Intent(BankingActivity.this, SubbankingActivity.class);
                 startActivity(intent);
             }
         });

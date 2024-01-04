@@ -13,9 +13,8 @@
         android:theme="@style/Theme.TestProject"
         tools:targetApi="31">
 
-        <activity
-            android:name=".SubBankingActivity"
-            android:exported="true" />
+        <activity android:name=".SubbankingActivity">
+        </activity>
 
         <activity
             android:name=".BankingActivity"
