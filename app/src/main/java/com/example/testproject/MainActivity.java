@@ -50,70 +50,33 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        binding.btnDetect.setOnClickListener(v -> onDetectClick());
-        binding.btnClear.setOnClickListener(v -> clearResult());
-
-//        FingerPaintView fingerPaintView = findViewById(R.id.fpv_paint);
-//        fingerPaintView.setOnTouchListener(new View.OnTouchListener(){
-//            @Override
-//            public boolean onTouch(View v, MotionEvent event) {
-//                int action = event.getActionMasked();
-//
-//                switch (action) {
-//                    case MotionEvent.ACTION_DOWN:
-//                        // 사용자가 화면에 터치했을 때의 처리
-//                        Log.v("touch event", "사용자가 화면에 터치했을 때의 처리");
-//                        break;
-//                    case MotionEvent.ACTION_MOVE:
-//                        // 사용자가 화면을 터치한 채로 움직일 때의 처리
-//                        Log.v("touch event", "사용자가 화면을 터치한 채로 움직일 때의 처리");
-//                        break;
-//                    case MotionEvent.ACTION_UP:
-//                        // 사용자가 터치를 떼었을 때의 처리
-//                        Log.v("touch event", "사용자가 터치를 떼었을 때의 처리");
-//                        break;
-//                    case MotionEvent.ACTION_CANCEL:
-//                        // 터치 이벤트가 취소되었을 때의 처리
-//                        Log.v("touch event", "터치 이벤트가 취소되었을 때의 처리");
-//                        break;
-//                }
-//                return true;
-//            }
-//
-//        });
+        FingerPaintView fingerPaintView = findViewById(R.id.fpv_paint);
+        fingerPaintView.setCustomEventListener(new OnWriteEventListener() {
+            @Override
+            public void onWriteFinish() {
+                Recognition result = onDetectImage();
+                Log.v("Main-onWriteFinish", String.valueOf(result.getLabel())+"인식됐고, 확률은 "+String.valueOf(result.getConfidence()));
+                fingerPaintView.clear();
+            }
+        });
     }
 
-    private void onDetectClick() {
+    private Recognition onDetectImage() {
         if (classifier == null) {
             Log.e(LOG_TAG, "onDetectClick(): Classifier is not initialized");
-            return;
+            return null;
         } else if (binding.fpvPaint.isEmpty()) {
             Toast.makeText(this, R.string.please_write_a_digit, Toast.LENGTH_SHORT).show();
-            return;
+            return null;
         }
         Bitmap image = binding.fpvPaint.exportToBitmap(
                 classifier.getInputShape().getWidth(), classifier.getInputShape().getHeight()
         );
         Recognition result = classifier.classify(image);
-        renderResult(result);
-    }
-
-    private void renderResult(Recognition result) {
-        binding.tvPrediction.setText(String.valueOf(result.getLabel()));
-        binding.tvProbability.setText(String.valueOf(result.getConfidence()));
-        binding.tvTimecost.setText(String.format(
-                getString(R.string.timecost_value),
-                result.getTimeCost()
-        ));
+        return result;
     }
 
 
-    private void clearResult() {
-        binding.fpvPaint.clear();
-        binding.tvPrediction.setText(R.string.empty);
-        binding.tvProbability.setText(R.string.empty);
-        binding.tvTimecost.setText(R.string.empty);
-    }
     @Override
     protected void onDestroy() {
         super.onDestroy();

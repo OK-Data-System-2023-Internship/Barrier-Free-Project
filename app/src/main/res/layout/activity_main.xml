@@ -8,55 +8,55 @@
     tools:context=".MainActivity">
 
 
-    <TableLayout
-        android:id="@+id/tableLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent">
+<!--    <TableLayout-->
+<!--        android:id="@+id/tableLayout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintTop_toTopOf="parent">-->
 
-        <TextView
-            style="@style/ResultText"
-            android:text="@string/prediction" />
+<!--        <TextView-->
+<!--            style="@style/ResultText"-->
+<!--            android:text="@string/prediction" />-->
 
-        <TextView
-            android:id="@+id/tv_prediction"
-            style="@style/ResultText"
-            android:text="@string/empty"
-            android:textColor="@android:color/black"
-            android:textSize="24sp"
-            tools:text="1" />
+<!--        <TextView-->
+<!--            android:id="@+id/tv_prediction"-->
+<!--            style="@style/ResultText"-->
+<!--            android:text="@string/empty"-->
+<!--            android:textColor="@android:color/black"-->
+<!--            android:textSize="24sp"-->
+<!--            tools:text="1" />-->
 
-        <TableRow>
+<!--        <TableRow>-->
 
-            <TextView
-                style="@style/ResultText"
-                android:text="@string/probability" />
+<!--            <TextView-->
+<!--                style="@style/ResultText"-->
+<!--                android:text="@string/probability" />-->
 
-            <TextView
-                style="@style/ResultText"
-                android:text="@string/timecost" />
+<!--            <TextView-->
+<!--                style="@style/ResultText"-->
+<!--                android:text="@string/timecost" />-->
 
-        </TableRow>
+<!--        </TableRow>-->
 
-        <TableRow>
+<!--        <TableRow>-->
 
-            <TextView
-                android:id="@+id/tv_probability"
-                style="@style/ResultText"
-                android:text="@string/empty"
-                android:textColor="@android:color/black"
-                tools:text="0.9" />
+<!--            <TextView-->
+<!--                android:id="@+id/tv_probability"-->
+<!--                style="@style/ResultText"-->
+<!--                android:text="@string/empty"-->
+<!--                android:textColor="@android:color/black"-->
+<!--                tools:text="0.9" />-->
 
-            <TextView
-                android:id="@+id/tv_timecost"
-                style="@style/ResultText"
-                android:text="@string/empty"
-                android:textColor="@android:color/black"
-                tools:text="10ms" />
+<!--            <TextView-->
+<!--                android:id="@+id/tv_timecost"-->
+<!--                style="@style/ResultText"-->
+<!--                android:text="@string/empty"-->
+<!--                android:textColor="@android:color/black"-->
+<!--                tools:text="10ms" />-->
 
-        </TableRow>
+<!--        </TableRow>-->
 
-    </TableLayout>
+<!--    </TableLayout>-->
 
     <com.example.testproject.FingerPaintView
         android:id="@+id/fpv_paint"
@@ -65,30 +65,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="100dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent">
-
-        <Button
-            android:id="@+id/btn_detect"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/detect" />
-
-        <Button
-            android:id="@+id/btn_clear"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/clear" />
-
-    </LinearLayout>
+        app:layout_constraintStart_toStartOf="parent" />
 
 <!--        <Button-->
 <!--            android:id="@+id/button_bottom_sheet"-->
