@@ -3,6 +3,7 @@ package com.example.testproject;
 import android.content.Context;
 import android.graphics.*;
 import android.graphics.drawable.Drawable;
+import android.util.AttributeSet;
 import android.os.Handler;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -41,6 +42,7 @@ public class FingerPaintView extends View {
     public void setCustomEventListener(OnWriteEventListener eventListener) {
         this.eventListener = eventListener;
     }
+
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
