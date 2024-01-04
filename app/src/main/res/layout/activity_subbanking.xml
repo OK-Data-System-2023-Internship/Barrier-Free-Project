@@ -9,15 +9,13 @@
 
     <Button
         android:id="@+id/button2"
-        android:text="Custom Button22"
         android:layout_width="232dp"
         android:layout_height="51dp"
-        android:layout_marginStart="164dp"
-        android:layout_marginTop="294dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="386dp"
+        android:text="Custom Button22"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.953"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.438" />
 </androidx.constraintlayout.widget.ConstraintLayout>
