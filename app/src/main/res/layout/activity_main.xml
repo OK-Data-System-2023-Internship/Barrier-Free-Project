@@ -70,20 +70,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btn_mount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="mount"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="31dp" />
-
-    <Button
-        android:id="@+id/btn_unmount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="unmount"
-        tools:layout_editor_absoluteX="105dp"
-        tools:layout_editor_absoluteY="31dp" />
+        android:id="@+id/btn_drawing_mode"
+        android:layout_width="412dp"
+        android:layout_height="144dp"
+        android:background="#00000000"
+        app:layout_constraintBottom_toTopOf="@+id/fpv_paint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

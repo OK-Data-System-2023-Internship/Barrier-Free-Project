@@ -7,6 +7,7 @@ import com.example.testproject.databinding.ActivityMainBinding;
 import android.graphics.Bitmap;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -16,6 +17,7 @@ import com.example.testproject.classifier.Recognition;
 public class MainActivity extends AppCompatActivity {
     private Classifier classifier;
     private ActivityMainBinding binding;
+    private boolean isDrawingMode = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,29 +60,27 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button btnMount = findViewById(R.id.btn_mount);
-        Button btnUnMount = findViewById(R.id.btn_unmount);
+        Button btnDrawingMode = findViewById(R.id.btn_drawing_mode);
 
-        btnMount.setOnClickListener(new View.OnClickListener() {
+        btnDrawingMode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onMountDrawBoard(fingerPaintView);
+                if(isDrawingMode){
+                    onUnmountDrawBoard(fingerPaintView);
+                    isDrawingMode = false;
+                }else{
+                    onMountDrawBoard(fingerPaintView);
+                    isDrawingMode = true;
+                }
             }
         });
-
-        btnUnMount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onUnmountDrawBoard(fingerPaintView);
-            }
-        });
-
     };
 
     public void onMountDrawBoard(FingerPaintView fingerPaintView) {
-        float viewHeight = fingerPaintView.getHeight();
         fingerPaintView.animate()
                 .translationY(0) // 뷰를 원래 위치로 이동시킵니다.
+                .setDuration(600)
+                .setInterpolator(new AccelerateDecelerateInterpolator())
                 .start(); // 애니메이션 시작
     };
 
@@ -88,6 +88,8 @@ public class MainActivity extends AppCompatActivity {
         float viewHeight = fingerPaintView.getHeight();
         fingerPaintView.animate()
                 .translationY(viewHeight) // 뷰를 원래 위치로 이동시킵니다.
+                .setDuration(600)
+                .setInterpolator(new AccelerateDecelerateInterpolator())
                 .start(); // 애니메이션 시작
     };
 
