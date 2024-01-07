@@ -1,6 +1,8 @@
 package com.example.testproject;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import com.example.testproject.databinding.ActivityMainBinding;
 
@@ -23,6 +25,10 @@ public class MainActivity extends AppCompatActivity {
         Log.v(LOG_TAG, "Classifier initialized");
     }
 
+    private void changeIntent(Class changeToActivity){
+        Intent intent = new Intent(MainActivity.this, changeToActivity);
+        startActivity(intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +38,22 @@ public class MainActivity extends AppCompatActivity {
 
         initClassifier();
 
+        FingerPaintFragment fingerPaintFragment = new FingerPaintFragment(classifier, (int drawingNum) -> {
+            switch(drawingNum) {
+                case 1:
+                    changeIntent(SubbankingActivity.class);
+                case 2:
+                    changeIntent(BankingActivity.class);
+                case 3:
+                    changeIntent(ConfirmActivity.class);
+                default:
+                    Log.v(LOG_TAG,"숫자를 다시 입력");
+            }
+        });
+
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.finger_paint_fragment_container, new FingerPaintFragment(classifier, binding))
+                    .add(R.id.finger_paint_fragment_container, fingerPaintFragment)
                     .commit();
         }
     }
