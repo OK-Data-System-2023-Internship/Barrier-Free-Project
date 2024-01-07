@@ -20,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
     private Classifier classifier;
     private ActivityMainBinding binding;
 
+    private static final String LOG_TAG = MainActivity.class.getSimpleName();
+
     private void initClassifier() {
         classifier = new Classifier(this);
         Log.v(LOG_TAG, "Classifier initialized");
@@ -63,6 +65,4 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
         // classifier.close();
     }
-
-    private static final String LOG_TAG = MainActivity.class.getSimpleName();
 }

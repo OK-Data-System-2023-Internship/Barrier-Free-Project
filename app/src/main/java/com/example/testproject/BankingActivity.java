@@ -7,11 +7,24 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.testproject.classifier.Classifier;
 import com.example.testproject.databinding.ActivityBankingBinding;
+import com.example.testproject.databinding.ActivityMainBinding;
 
 public class BankingActivity extends AppCompatActivity {
     // 바인딩 객체 선언
     private ActivityBankingBinding binding;
+    private static final String LOG_TAG = MainActivity.class.getSimpleName();
+
+    private void initClassifier() {
+        classifier = new Classifier(this);
+        Log.v(LOG_TAG, "Classifier initialized");
+    }
+
+    private void changeIntent(Class changeToActivity){
+        Intent intent = new Intent(BankingActivity.this, changeToActivity);
+        startActivity(intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +33,27 @@ public class BankingActivity extends AppCompatActivity {
         // 바인딩 객체 초기화
         binding = ActivityBankingBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        initClassifier();
+
+        FingerPaintFragment fingerPaintFragment = new FingerPaintFragment(classifier, (int drawingNum) -> {
+            switch(drawingNum) {
+                case 1:
+                    changeIntent(SubbankingActivity.class);
+                case 2:
+                    changeIntent(BankingActivity.class);
+                case 3:
+                    changeIntent(ConfirmActivity.class);
+                default:
+                    Log.v(LOG_TAG,"숫자를 다시 입력");
+            }
+        });
+
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.finger_paint_fragment_container, fingerPaintFragment)
+                    .commit();
+        }
 
         // 버튼 클릭 리스너 설정
         binding.button1.setOnClickListener(new View.OnClickListener() {
@@ -36,5 +70,8 @@ public class BankingActivity extends AppCompatActivity {
             }
         });
     }
+
+    private Classifier classifier;
+
 
 }
