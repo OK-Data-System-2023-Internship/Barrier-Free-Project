@@ -114,6 +114,7 @@ public class FingerPaintFragment extends Fragment {
 
         if(mediaPlayer != null){
             mediaPlayer.pause();
+            mediaPlayer.seekTo(0);
         }
     };
 

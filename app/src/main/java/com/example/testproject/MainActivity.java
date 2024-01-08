@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
         initClassifier();
 
-        /* 드로잉 보드가 켜졌습니다. 전체 계좌를 보시기 원하시면 1번, 이체를 원하시면 2번, 돈 모으기를 원하시면 3번, 대출을 원하시면 4번, 대출 상환을 원하시면 5번을 적어주세요 */
+        /* 드로잉 보드가 켜졌습니다. 이체를 원하시면 1번, 전 계좌조회를 원하시면 2번, 상품보기를 원하시면 3번, 대출을 원하시면 4번, 대출 상환을 원하시면 5번을 적어주세요 */
         mediaplay = MediaPlayer.create(MainActivity.this, R.raw.main_init);
 
         FingerPaintFragment fingerPaintFragment = new FingerPaintFragment(classifier, (int drawingNum) -> {

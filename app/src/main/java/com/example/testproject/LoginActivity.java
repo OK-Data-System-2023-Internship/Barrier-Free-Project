@@ -3,6 +3,7 @@ package com.example.testproject;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import com.example.testproject.databinding.ActivityLoginBinding;
@@ -36,6 +37,9 @@ public class LoginActivity  extends AppCompatActivity {
         container = findViewById(R.id.container);
         initClassifier();
 
+        /* 드로잉 보드가 켜졌습니다. 비밀번호를 입력해 주세요 */
+        MediaPlayer mediaPlayer = MediaPlayer.create(LoginActivity.this, R.raw.login_init);
+
         FingerPaintFragment fingerPaintFragment = new FingerPaintFragment(classifier, (int drawingNum) -> {
             if(++loginCnt >= 6){
                 changeIntent(MainActivity.class);
@@ -46,8 +50,7 @@ public class LoginActivity  extends AppCompatActivity {
             circle.setLayoutParams(layoutParams);
             circle.setBackgroundResource(R.drawable.circle_shape);
             container.addView(circle);
-            Log.v(LOG_TAG, loginCnt+"입니다");
-        });
+        }, mediaPlayer);
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()

@@ -1,6 +1,7 @@
 package com.example.testproject;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -36,6 +37,9 @@ public class BankingActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         initClassifier();
+
+        /* 드로잉 보드가 켜졌습니다. 메인페이지로 돌아가시려면 1번, 전 계좌조회를 원하시면 2번, 상품보기를 원하시면 3번을 적어주세요 */
+//        MediaPlayer mediaPlayer = MediaPlayer.create(BankingActivity.this, R.raw.banking_init);
 
         FingerPaintFragment fingerPaintFragment = new FingerPaintFragment(classifier, (int drawingNum) -> {
             switch(drawingNum) {
