@@ -1,6 +1,7 @@
 package com.example.testproject;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -25,6 +26,8 @@ public class ConfirmActivity extends AppCompatActivity {
         // 페이지 이동 확인 로그
         Log.v("ConfirmActivity", "Moved to ConfirmActivity");
 
+        /* 드로잉보드가 켜졌습니다. 김가은님에게 2000원을 이체하시겠습니까? 맞으면 1 아니면 0을 입력해주세요 */
+        MediaPlayer mediaPlayer = MediaPlayer.create(ConfirmActivity.this, R.raw.confirm_init);
         binding.button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

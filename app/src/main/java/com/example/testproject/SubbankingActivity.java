@@ -1,6 +1,7 @@
 package com.example.testproject;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -52,6 +53,9 @@ public class SubbankingActivity extends AppCompatActivity {
         // 버튼 클릭 시(드로잉 모드 종료 시) BottomSheet 올라오기
         bottomSheetDialog.show();
 
+        /* 드로잉 보드가 켜졌습니다. 계좌번호를 입력하시고 드로잉 보드를 닫아주세요 */
+        MediaPlayer mediaPlayerInit = MediaPlayer.create(SubbankingActivity.this, R.raw.subbanking_init);
+
         FingerPaintFragment fingerPaintFragment = new FingerPaintFragment(classifier, (int drawingNum) -> {
             // 계좌번호 드로잉 입력
             accountNums += String.valueOf(drawingNum);      // 계좌번호
@@ -59,7 +63,7 @@ public class SubbankingActivity extends AppCompatActivity {
             // textView 바인딩
             binding.textView2.setText(accountNums);         // 입력받은 계좌번호 화면에 표시
 
-        });
+        },mediaPlayerInit);
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
@@ -81,7 +85,9 @@ public class SubbankingActivity extends AppCompatActivity {
             }
         });
 
-
+        /* 은행을 선택해주세요 */
+        MediaPlayer mediaPlayer = MediaPlayer.create(SubbankingActivity.this, R.raw.banking_init);
+        mediaPlayer.start();
     }
 
     private Classifier classifier;
