@@ -7,13 +7,16 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import com.example.testproject.databinding.ActivityMainBinding;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import com.example.testproject.classifier.Classifier;
 
 public class MainActivity extends AppCompatActivity {
     private Classifier classifier;
     private ActivityMainBinding binding;
-
+    private Button button;
+    private MediaPlayer mediaplay;
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
 
     private void initClassifier() {
@@ -33,6 +36,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         initClassifier();
+
+        /* 드로잉 보드가 켜졌습니다. 전체 계좌를 보시기 원하시면 1번, 이체를 원하시면 2번, 돈 모으기를 원하시면 3번, 대출을 원하시면 4번, 대출 상환을 원하시면 5번을 적어주세요 */
+        mediaplay = MediaPlayer.create(MainActivity.this, R.raw.main_init);
 
         FingerPaintFragment fingerPaintFragment = new FingerPaintFragment(classifier, (int drawingNum) -> {
             switch(drawingNum) {
@@ -55,17 +61,13 @@ public class MainActivity extends AppCompatActivity {
                 default:
                     Log.v(LOG_TAG,"숫자를 다시 입력");
             }
-        });
+        }, mediaplay);
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.finger_paint_fragment_container, fingerPaintFragment)
                     .commit();
         }
-
-        /* 드로잉 보드가 켜졌습니다. 전체 계좌를 보시기 원하시면 1번, 이체를 원하시면 2번, 돈 모으기를 원하시면 3번, 대출을 원하시면 4번, 대출 상환을 원하시면 5번을 적어주세요 */
-        MediaPlayer mediaplay = MediaPlayer.create(MainActivity.this, R.raw.main_init);
-        mediaplay.start();
     }
 
     @Override

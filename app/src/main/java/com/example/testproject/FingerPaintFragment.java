@@ -1,6 +1,7 @@
 package com.example.testproject;
 
 import android.graphics.Bitmap;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,16 +27,23 @@ public class FingerPaintFragment extends Fragment {
     private FingerPaintView fingerPaintView;
     private Classifier classifier;
     private boolean isDrawingMode = false;
-    private VoidFunction myFunction;
+    private VoidFunction drawingCallback;
+    private MediaPlayer mediaPlayer;
 
-    public FingerPaintFragment(Classifier classifier, VoidFunction function) {
+    public FingerPaintFragment(Classifier classifier, VoidFunction drawingCallback) {
         // Required empty public constructor
         this.classifier = classifier;
-        this.myFunction = function;
+        this.drawingCallback = drawingCallback;
+    }
+    public FingerPaintFragment(Classifier classifier, VoidFunction drawingCallback, MediaPlayer mediaPlayer) {
+        // Required empty public constructor
+        this.classifier = classifier;
+        this.drawingCallback = drawingCallback;
+        this.mediaPlayer = mediaPlayer;
     }
 
     public void performAction(int drawingNum){
-        myFunction.execute(drawingNum);
+        drawingCallback.execute(drawingNum);
     }
 
     @Override
@@ -90,6 +98,9 @@ public class FingerPaintFragment extends Fragment {
                 .setDuration(600)
                 .setInterpolator(new AccelerateDecelerateInterpolator())
                 .start(); // 애니메이션 시작
+        if(mediaPlayer != null){
+            mediaPlayer.start();
+        }
     };
 
     public void onUnmountDrawBoard(FingerPaintView fingerPaintView) {
@@ -100,6 +111,10 @@ public class FingerPaintFragment extends Fragment {
                 .setDuration(600)
                 .setInterpolator(new AccelerateDecelerateInterpolator())
                 .start(); // 애니메이션 시작
+
+        if(mediaPlayer != null){
+            mediaPlayer.pause();
+        }
     };
 
 
