@@ -7,6 +7,13 @@
     android:background="@drawable/banking_page"
     tools:context=".BankingActivity">
 
+    <FrameLayout
+        android:id="@+id/finger_paint_fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </FrameLayout>
+
     <Button
         android:id="@+id/button1"
         android:layout_width="108dp"
@@ -14,13 +21,9 @@
         android:background="#00000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.947"
+        app:layout_constraintHorizontal_bias="0.94"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.962" />
+        app:layout_constraintVertical_bias="0.96" />
 
-    <FrameLayout
-        android:id="@+id/finger_paint_fragment_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

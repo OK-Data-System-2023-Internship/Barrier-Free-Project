@@ -39,11 +39,11 @@ public class BankingActivity extends AppCompatActivity {
         FingerPaintFragment fingerPaintFragment = new FingerPaintFragment(classifier, (int drawingNum) -> {
             switch(drawingNum) {
                 case 1:
-                    changeIntent(SubbankingActivity.class);
-                case 2:
-                    changeIntent(BankingActivity.class);
-                case 3:
-                    changeIntent(ConfirmActivity.class);
+                    changeIntent(MainActivity.class);
+//                case 2:
+//                    changeIntent(SubbankingActivity.class);
+//                case 3:
+//                    changeIntent(ConfirmActivity.class);
                 default:
                     Log.v(LOG_TAG,"숫자를 다시 입력");
             }
