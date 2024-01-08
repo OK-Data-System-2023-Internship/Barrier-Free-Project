@@ -25,6 +25,12 @@
         <activity android:name=".MainActivity">
         </activity>
 
+        <activity android:name=".TwoActivity">
+        </activity>
+
+        <activity android:name=".ThreeActivity">
+        </activity>
+
         <activity
             android:name=".LoginActivity"
             android:exported="true">

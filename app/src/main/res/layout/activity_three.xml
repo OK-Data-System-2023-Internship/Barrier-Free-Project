@@ -4,26 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/banking_page"
-    tools:context=".BankingActivity">
+    android:foregroundTint="@color/colorAccent"
+    android:background="@drawable/mvpg3"
+    tools:context=".ThreeActivity">
 
     <FrameLayout
         android:id="@+id/finger_paint_fragment_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </FrameLayout>
+        android:layout_height="match_parent" />
 
     <Button
-        android:id="@+id/button1"
-        android:layout_width="108dp"
-        android:layout_height="60dp"
-        android:background="#00000000"
+        android:id="@+id/button6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.94"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.96" />
+        app:layout_constraintVertical_bias="0.060000002" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+

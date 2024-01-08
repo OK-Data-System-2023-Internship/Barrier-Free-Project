@@ -36,7 +36,7 @@ public class SubbankingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // 버튼 클릭 확인 로그
-                Log.e("SubbankingActivity", "계좌입력 버튼이 클릭되었습니다!");
+                Log.v("SubbankingActivity", "계좌입력 버튼이 클릭되었습니다!");
 
                 // 버튼 클릭 시 BottomSheet 올라오기
                 bottomSheetDialog.show();
@@ -48,7 +48,7 @@ public class SubbankingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // 버튼 클릭 확인 로그
-                Log.e("SubbankingActivity", "확인 버튼이 클릭되었습니다!");
+                Log.v("SubbankingActivity", "확인 버튼이 클릭되었습니다!");
 
                 // 버튼 클릭 시 ConfirmActivity 페이지로 이동
                 // 인텐트 생성 및 ConfirmActivity 시작

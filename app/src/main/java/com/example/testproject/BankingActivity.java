@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.testproject.classifier.Classifier;
 import com.example.testproject.databinding.ActivityBankingBinding;
-import com.example.testproject.databinding.ActivityMainBinding;
 
 public class BankingActivity extends AppCompatActivity {
     // 바인딩 객체 선언
@@ -30,6 +29,8 @@ public class BankingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        Log.e("BankingActivity", "Moved to BankingPage!");
+
         // 바인딩 객체 초기화
         binding = ActivityBankingBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -39,11 +40,14 @@ public class BankingActivity extends AppCompatActivity {
         FingerPaintFragment fingerPaintFragment = new FingerPaintFragment(classifier, (int drawingNum) -> {
             switch(drawingNum) {
                 case 1:
-                    changeIntent(SubbankingActivity.class);
+                    changeIntent(MainActivity.class);
+                    break;
                 case 2:
-                    changeIntent(BankingActivity.class);
+                    changeIntent(TwoActivity.class);
+                    break;
                 case 3:
-                    changeIntent(ConfirmActivity.class);
+                    changeIntent(ThreeActivity.class);
+                    break;
                 default:
                     Log.v(LOG_TAG,"숫자를 다시 입력");
             }

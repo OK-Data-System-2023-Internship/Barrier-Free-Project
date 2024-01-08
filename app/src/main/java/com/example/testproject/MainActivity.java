@@ -7,6 +7,7 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import com.example.testproject.databinding.ActivityMainBinding;
 import android.util.Log;
+
 import com.example.testproject.classifier.Classifier;
 
 public class MainActivity extends AppCompatActivity {
@@ -35,12 +36,22 @@ public class MainActivity extends AppCompatActivity {
 
         FingerPaintFragment fingerPaintFragment = new FingerPaintFragment(classifier, (int drawingNum) -> {
             switch(drawingNum) {
+                // 모든 case를 확인하여, case3만 출력하는 문제.
+                // case에 해당하는 동작 후 종료하기 위해
+                // break; 추가
+
                 case 1:
-                    changeIntent(SubbankingActivity.class);
-                case 2:
                     changeIntent(BankingActivity.class);
+//                    Log.v(LOG_TAG,"111111");
+                    break;
+                case 2:
+                    changeIntent(TwoActivity.class);
+//                    Log.v(LOG_TAG,"22222");
+                    break;
                 case 3:
-                    changeIntent(ConfirmActivity.class);
+                    changeIntent(ThreeActivity.class);
+//                    Log.v(LOG_TAG,"33333");
+                    break;
                 default:
                     Log.v(LOG_TAG,"숫자를 다시 입력");
             }
