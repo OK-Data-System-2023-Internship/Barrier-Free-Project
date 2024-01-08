@@ -22,7 +22,7 @@ public class FingerPaintView extends View {
     private Paint pen = buildDefaultPen();
     private boolean empty = true;
     private OnWriteEventListener eventListener;
-    private final long WRITE_TIME = 1000;
+    private final long WRITE_TIME = 300;
 
     private final Handler timerHandler = new Handler();
     public boolean isEmpty () {
