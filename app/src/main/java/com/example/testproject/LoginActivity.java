@@ -3,47 +3,50 @@ package com.example.testproject;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
-import com.example.testproject.databinding.ActivityMainBinding;
+
+import com.example.testproject.databinding.ActivityLoginBinding;
 import android.util.Log;
+import android.view.View;
+import android.widget.LinearLayout;
+
 import com.example.testproject.classifier.Classifier;
 
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity  extends AppCompatActivity {
     private Classifier classifier;
-    private ActivityMainBinding binding;
-
-    private static final String LOG_TAG = MainActivity.class.getSimpleName();
-
+    private ActivityLoginBinding binding;
+    LinearLayout container;
+    private static final String LOG_TAG = LoginActivity.class.getSimpleName();
+    private int loginCnt = 0;
     private void initClassifier() {
         classifier = new Classifier(this);
         Log.v(LOG_TAG, "Classifier initialized");
     }
 
     private void changeIntent(Class changeToActivity){
-        Intent intent = new Intent(MainActivity.this, changeToActivity);
+        Intent intent = new Intent(LoginActivity.this, changeToActivity);
         startActivity(intent);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+        container = findViewById(R.id.container);
         initClassifier();
 
         FingerPaintFragment fingerPaintFragment = new FingerPaintFragment(classifier, (int drawingNum) -> {
-            switch(drawingNum) {
-                case 1:
-                    changeIntent(SubbankingActivity.class);
-                case 2:
-                    changeIntent(BankingActivity.class);
-                case 3:
-                    changeIntent(ConfirmActivity.class);
-                default:
-                    Log.v(LOG_TAG,"숫자를 다시 입력");
+            if(++loginCnt >= 6){
+                changeIntent(MainActivity.class);
             }
+            View circle = new View(LoginActivity.this);
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(35, 35);
+            layoutParams.setMargins(18, 15, 18, 15);
+            circle.setLayoutParams(layoutParams);
+            circle.setBackgroundResource(R.drawable.circle_shape);
+            container.addView(circle);
+            Log.v(LOG_TAG, loginCnt+"입니다");
         });
 
         if (savedInstanceState == null) {
@@ -52,9 +55,6 @@ public class MainActivity extends AppCompatActivity {
                     .commit();
         }
 
-        /* 드로잉 보드가 켜졌습니다. 전체 계좌를 보시기 원하시면 1번, 이체를 원하시면 2번, 돈 모으기를 원하시면 3번, 대출을 원하시면 4번, 대출 상환을 원하시면 5번을 적어주세요 */
-        MediaPlayer mediaplay = MediaPlayer.create(MainActivity.this, R.raw.main_init);
-        mediaplay.start();
     }
 
     @Override
