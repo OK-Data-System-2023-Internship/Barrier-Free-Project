@@ -40,10 +40,10 @@ public class BankingActivity extends AppCompatActivity {
             switch(drawingNum) {
                 case 1:
                     changeIntent(MainActivity.class);
-//                case 2:
-//                    changeIntent(SubbankingActivity.class);
-//                case 3:
-//                    changeIntent(ConfirmActivity.class);
+                case 2:
+                    changeIntent(SubbankingActivity.class);
+                case 3:
+                    changeIntent(ConfirmActivity.class);
                 default:
                     Log.v(LOG_TAG,"숫자를 다시 입력");
             }
