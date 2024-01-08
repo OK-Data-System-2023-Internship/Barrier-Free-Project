@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/mvpg2"
-    tools:context=".MainActivity">
+    tools:context=".TwoActivity">
 
     <FrameLayout
         android:id="@+id/finger_paint_fragment_container"

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:foregroundTint="@color/colorAccent"
     android:background="@drawable/mvpg3"
-    tools:context=".MainActivity">
+    tools:context=".ThreeActivity">
 
     <FrameLayout
         android:id="@+id/finger_paint_fragment_container"
