@@ -8,6 +8,7 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.testproject.classifier.Classifier;
 import com.example.testproject.databinding.ActivityBankingBinding;
 import com.example.testproject.databinding.ActivitySubbankingBinding;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -15,8 +16,23 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 public class SubbankingActivity extends AppCompatActivity {
 
+    private String accountNums="";
+
     // 바인딩 객체 선언
     private ActivitySubbankingBinding binding;
+
+    private static final String LOG_TAG = MainActivity.class.getSimpleName();
+
+
+    private void initClassifier() {
+        classifier = new Classifier(this);
+        Log.v(LOG_TAG, "Classifier initialized");
+    }
+
+    private void changeIntent(Class changeToActivity){
+        Intent intent = new Intent(SubbankingActivity.this, changeToActivity);
+        startActivity(intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,22 +42,57 @@ public class SubbankingActivity extends AppCompatActivity {
         binding = ActivitySubbankingBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        initClassifier();
+
         // BottomSheet View 초기화
         View bottomSheetView = getLayoutInflater().inflate(R.layout.bottom_sheet2, null);
         final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
         bottomSheetDialog.setContentView(bottomSheetView);
-        
-        // 버튼 클릭 리스너 설정
-        binding.button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // 버튼 클릭 확인 로그
-                Log.v("SubbankingActivity", "계좌입력 버튼이 클릭되었습니다!");
 
-                // 버튼 클릭 시 BottomSheet 올라오기
-                bottomSheetDialog.show();
-            }
+        // 버튼 클릭 시(드로잉 모드 종료 시) BottomSheet 올라오기
+        bottomSheetDialog.show();
+        
+//        // 버튼 클릭 리스너 설정
+//        binding.button2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // 버튼 클릭 확인 로그
+//                Log.v("SubbankingActivity", "계좌입력 버튼이 클릭되었습니다!");
+//
+//                // 버튼 클릭 시 BottomSheet 올라오기
+//                bottomSheetDialog.show();
+//            }
+//        });
+
+
+        FingerPaintFragment fingerPaintFragment = new FingerPaintFragment(classifier, (int drawingNum) -> {
+//            switch(drawingNum) {
+//                // 0~9 드로잉을 통해 계좌번호 입력
+//                case 1:
+//                    changeIntent(MainActivity.class);
+//                    break;
+//                case 2:
+//                    changeIntent(TwoActivity.class);
+//                    break;
+//                case 3:
+//                    changeIntent(ThreeActivity.class);
+//                    break;
+//                default:
+//                    Log.v(LOG_TAG,"숫자를 다시 입력");
+//            }
+
+            accountNums += String.valueOf(drawingNum);      // 계좌번호
+
+            // textView 바인딩
+            binding.textView2.setText(accountNums);         // 입력받은 계좌번호 화면에 표시
+
         });
+
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.finger_paint_fragment_container, fingerPaintFragment)
+                    .commit();
+        }
 
 
         binding.button3.setOnClickListener(new View.OnClickListener() {
@@ -59,5 +110,7 @@ public class SubbankingActivity extends AppCompatActivity {
 
 
     }
+
+    private Classifier classifier;
 
 }

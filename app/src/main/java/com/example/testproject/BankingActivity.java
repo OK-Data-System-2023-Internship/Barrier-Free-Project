@@ -11,7 +11,7 @@ import com.example.testproject.classifier.Classifier;
 import com.example.testproject.databinding.ActivityBankingBinding;
 
 public class BankingActivity extends AppCompatActivity {
-    private String accountNums="";
+    private String amount="";
 
     // 바인딩 객체 선언
     private ActivityBankingBinding binding;
@@ -57,11 +57,11 @@ public class BankingActivity extends AppCompatActivity {
 //                default:
 //                    Log.v(LOG_TAG,"숫자를 다시 입력");
 //            }
-            
-            accountNums += String.valueOf(drawingNum);      // 계좌번호
+
+            amount += String.valueOf(drawingNum);      // 계좌번호
 
             // textView 바인딩
-            binding.textView1.setText(accountNums);         // 입력받은 계좌번호 화면에 표시
+            binding.textView1.setText(amount);         // 입력받은 계좌번호 화면에 표시
 
         });
 
