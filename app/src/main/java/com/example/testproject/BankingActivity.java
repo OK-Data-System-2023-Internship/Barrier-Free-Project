@@ -12,7 +12,7 @@ import com.example.testproject.classifier.Classifier;
 import com.example.testproject.databinding.ActivityBankingBinding;
 
 public class BankingActivity extends AppCompatActivity {
-    private String accountNums="";
+    private String amount="";
 
     // 바인딩 객체 선언
     private ActivityBankingBinding binding;
@@ -43,25 +43,11 @@ public class BankingActivity extends AppCompatActivity {
         /* 드로잉 보드가 켜졌습니다. 금액을 입력하신 후에 드로잉 보드를 종료해주세요 */
         MediaPlayer mediaPlayer = MediaPlayer.create(BankingActivity.this, R.raw.banking_init);
         FingerPaintFragment fingerPaintFragment = new FingerPaintFragment(classifier, (int drawingNum) -> {
-//            switch(drawingNum) {
-//                // 0~9 드로잉을 통해 계좌번호 입력
-//                case 1:
-//                    changeIntent(MainActivity.class);
-//                    break;
-//                case 2:
-//                    changeIntent(TwoActivity.class);
-//                    break;
-//                case 3:
-//                    changeIntent(ThreeActivity.class);
-//                    break;
-//                default:
-//                    Log.v(LOG_TAG,"숫자를 다시 입력");
-//            }
-            
-            accountNums += String.valueOf(drawingNum);      // 계좌번호
+            // 금액 드로잉 입력
+            amount += String.valueOf(drawingNum);      // 금액
 
             // textView 바인딩
-            binding.textView1.setText(accountNums);         // 입력받은 계좌번호 화면에 표시
+            binding.textView1.setText(amount);         // 입력받은 금액 화면에 표시
 
         }, mediaPlayer);
 
