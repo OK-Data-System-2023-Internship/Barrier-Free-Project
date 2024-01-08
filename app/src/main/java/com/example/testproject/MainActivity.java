@@ -3,9 +3,9 @@ package com.example.testproject;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import com.example.testproject.databinding.ActivityMainBinding;
-
 import android.util.Log;
 
 import com.example.testproject.classifier.Classifier;
@@ -62,6 +62,10 @@ public class MainActivity extends AppCompatActivity {
                     .add(R.id.finger_paint_fragment_container, fingerPaintFragment)
                     .commit();
         }
+
+        /* 드로잉 보드가 켜졌습니다. 전체 계좌를 보시기 원하시면 1번, 이체를 원하시면 2번, 돈 모으기를 원하시면 3번, 대출을 원하시면 4번, 대출 상환을 원하시면 5번을 적어주세요 */
+        MediaPlayer mediaplay = MediaPlayer.create(MainActivity.this, R.raw.main_init);
+        mediaplay.start();
     }
 
     @Override

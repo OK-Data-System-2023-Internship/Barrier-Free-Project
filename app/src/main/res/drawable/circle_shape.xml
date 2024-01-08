@@ -1,0 +1,6 @@
+<!-- res/drawable/circle_shape.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <solid android:color="#FF5724" /> <!-- 원의 색상 설정 (예: 빨간색) -->
+    <size android:width="5dp" android:height="5dp" /> <!-- 원의 크기 설정 -->
+</shape>
