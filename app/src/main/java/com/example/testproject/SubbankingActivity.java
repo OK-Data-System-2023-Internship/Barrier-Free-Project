@@ -27,7 +27,7 @@ public class SubbankingActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         // BottomSheet View 초기화
-        View bottomSheetView = getLayoutInflater().inflate(R.layout.bottom_sheet, null);
+        View bottomSheetView = getLayoutInflater().inflate(R.layout.bottom_sheet2, null);
         final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
         bottomSheetDialog.setContentView(bottomSheetView);
         
