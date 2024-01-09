@@ -45,13 +45,10 @@ public class SubbankingActivity extends AppCompatActivity {
 
         initClassifier();
 
-        // BottomSheet View 초기화
-        View bottomSheetView = getLayoutInflater().inflate(R.layout.bottom_sheet2, null);
-        final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
-        bottomSheetDialog.setContentView(bottomSheetView);
+        // Bottom Sheet를 표시하려면 이 코드를 호출합니다
+        BottomSheetFragment bottomSheet = new BottomSheetFragment();
+        bottomSheet.show(getSupportFragmentManager(), "BottomSheetFragment");
 
-        // 버튼 클릭 시(드로잉 모드 종료 시) BottomSheet 올라오기
-        bottomSheetDialog.show();
 
         /* 드로잉 보드가 켜졌습니다. 계좌번호를 입력하시고 드로잉 보드를 닫아주세요 */
         MediaPlayer mediaPlayerInit = MediaPlayer.create(SubbankingActivity.this, R.raw.subbanking_init);
@@ -88,6 +85,7 @@ public class SubbankingActivity extends AppCompatActivity {
         /* 은행을 선택해주세요 */
         MediaPlayer mediaPlayer = MediaPlayer.create(SubbankingActivity.this, R.raw.banking_init);
         mediaPlayer.start();
+
     }
 
     private Classifier classifier;
