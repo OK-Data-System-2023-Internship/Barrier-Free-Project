@@ -44,13 +44,10 @@ public class SubbankingActivity extends AppCompatActivity {
 
         initClassifier();
 
-        // BottomSheet View 초기화
-        View bottomSheetView = getLayoutInflater().inflate(R.layout.bottom_sheet2, null);
-        final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
-        bottomSheetDialog.setContentView(bottomSheetView);
+        // Bottom Sheet를 표시하려면 이 코드를 호출합니다
+        BottomSheetFragment bottomSheet = new BottomSheetFragment();
+        bottomSheet.show(getSupportFragmentManager(), "BottomSheetFragment");
 
-        // 버튼 클릭 시(드로잉 모드 종료 시) BottomSheet 올라오기
-        bottomSheetDialog.show();
 
         FingerPaintFragment fingerPaintFragment = new FingerPaintFragment(classifier, (int drawingNum) -> {
             // 계좌번호 드로잉 입력
@@ -80,6 +77,7 @@ public class SubbankingActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
 
 
     }
