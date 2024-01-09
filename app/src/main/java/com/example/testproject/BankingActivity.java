@@ -56,8 +56,16 @@ public class BankingActivity extends AppCompatActivity {
                     .add(R.id.finger_paint_fragment_container, fingerPaintFragment)
                     .commit();
         }
+//
+//        // make a function that change intent to SubbankingActivity when button1 is clicked
+//        binding.button1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                changeIntent(SubbankingActivity.class);
+//            }
+//        });
 
-        // 버튼 클릭 리스너 설정
+         // 버튼 클릭 리스너 설정
         binding.button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,6 +77,7 @@ public class BankingActivity extends AppCompatActivity {
                 // 인텐트 생성 및 SubbankingActivity 시작
                 Intent intent = new Intent(BankingActivity.this, SubbankingActivity.class);
                 startActivity(intent);
+
             }
         });
     }
