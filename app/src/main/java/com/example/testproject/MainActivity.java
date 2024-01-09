@@ -41,26 +41,26 @@ public class MainActivity extends AppCompatActivity {
         mediaplay = MediaPlayer.create(MainActivity.this, R.raw.main_init);
 
         FingerPaintFragment fingerPaintFragment = new FingerPaintFragment(classifier, (int drawingNum) -> {
-            switch(drawingNum) {
+//            switch(drawingNum) {
                 // 모든 case를 확인하여, case3만 출력하는 문제.
                 // case에 해당하는 동작 후 종료하기 위해
                 // break; 추가
 
-                case 1:
-                    changeIntent(BankingActivity.class);
+//                case 1:
+                    changeIntent(BankingActivity.class);        // 시연 중 오류 방지 위해 이동 페이지 고정함.
 //                    Log.v(LOG_TAG,"111111");
-                    break;
-                case 2:
-                    changeIntent(TwoActivity.class);
-//                    Log.v(LOG_TAG,"22222");
-                    break;
-                case 3:
-                    changeIntent(ThreeActivity.class);
-//                    Log.v(LOG_TAG,"33333");
-                    break;
-                default:
-                    Log.v(LOG_TAG,"숫자를 다시 입력");
-            }
+//                    break;
+//                case 2:
+//                    changeIntent(TwoActivity.class);
+////                    Log.v(LOG_TAG,"22222");
+//                    break;
+//                case 3:
+//                    changeIntent(ThreeActivity.class);
+////                    Log.v(LOG_TAG,"33333");
+//                    break;
+//                default:
+//                    Log.v(LOG_TAG,"숫자를 다시 입력");
+//            }
         }, mediaplay);
 
         if (savedInstanceState == null) {
