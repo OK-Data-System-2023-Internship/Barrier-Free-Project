@@ -44,18 +44,18 @@ public class ConfirmActivity extends AppCompatActivity {
         MediaPlayer mediaPlayer = MediaPlayer.create(ConfirmActivity.this, R.raw.confirm_init);
 
         FingerPaintFragment fingerPaintFragment = new FingerPaintFragment(classifier, (int drawingNum) -> {
-            switch (drawingNum) {
-                case 0:
-                    // 이체 재실행
-                    changeIntent(BankingActivity.class);
-                    break;
-                case 1:
+//            switch (drawingNum) {
+//                case 0:
+//                    // 이체 재실행
+//                    changeIntent(BankingActivity.class);
+//                    break;
+//                case 1:
                     // MainActivity 페이지로 이동
-                    changeIntent(MainActivity.class);
-                    break;
-                default:
-                    Log.v(LOG_TAG, "숫자를 다시 입력");
-            }
+                    changeIntent(MainActivity.class);        // 시연 중 오류 방지 위해 이동 페이지 고정함.
+//                    break;
+//                default:
+//                    Log.v(LOG_TAG, "숫자를 다시 입력");
+//            }
         }, mediaPlayer);
 
         if (savedInstanceState == null) {
