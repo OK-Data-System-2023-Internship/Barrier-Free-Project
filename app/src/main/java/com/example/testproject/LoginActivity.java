@@ -46,7 +46,7 @@ public class LoginActivity  extends AppCompatActivity {
             }
             View circle = new View(LoginActivity.this);
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(35, 35);
-            layoutParams.setMargins(18, 15, 18, 15);
+            layoutParams.setMargins(14, 15, 14, 15);
             circle.setLayoutParams(layoutParams);
             circle.setBackgroundResource(R.drawable.circle_shape);
             container.addView(circle);
