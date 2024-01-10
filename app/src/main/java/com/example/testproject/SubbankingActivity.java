@@ -83,7 +83,7 @@ public class SubbankingActivity extends AppCompatActivity {
         });
 
         /* 은행을 선택해주세요 */
-        MediaPlayer mediaPlayer = MediaPlayer.create(SubbankingActivity.this, R.raw.banking_init);
+        MediaPlayer mediaPlayer = MediaPlayer.create(SubbankingActivity.this, R.raw.subbanking_create);
         mediaPlayer.start();
 
     }
