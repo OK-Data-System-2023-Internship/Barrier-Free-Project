@@ -1,5 +1,6 @@
 package com.example.testproject;
 
+import android.animation.ObjectAnimator;
 import android.graphics.Bitmap;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -13,6 +14,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -93,6 +96,7 @@ public class FingerPaintFragment extends Fragment {
 
     public void onMountDrawBoard(FingerPaintView fingerPaintView) {
         isDrawingMode = true;
+
         fingerPaintView.animate()
                 .translationY(0) // 뷰를 원래 위치로 이동시킵니다.
                 .setDuration(600)
