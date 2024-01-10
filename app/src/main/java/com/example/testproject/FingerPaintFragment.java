@@ -93,16 +93,17 @@ public class FingerPaintFragment extends Fragment {
             }
         });
     };
-
+    // 애니메이션을 적용합니다.
     public void onMountDrawBoard(FingerPaintView fingerPaintView) {
-        isDrawingMode = true;
-
+        isDrawingMode = true;// 드로잉 보드를 올릴 때
         fingerPaintView.animate()
                 .translationY(0) // 뷰를 원래 위치로 이동시킵니다.
-                .setDuration(600)
-                .setInterpolator(new AccelerateDecelerateInterpolator())
+                .setDuration(600)// 애니메이션 시간
+                .setInterpolator(// 애니메이션 속도 조절
+                        new AccelerateDecelerateInterpolator()
+                )
                 .start(); // 애니메이션 시작
-        if(mediaPlayer != null){
+        if(mediaPlayer != null){//음악 재생
             mediaPlayer.start();
         }
     };
