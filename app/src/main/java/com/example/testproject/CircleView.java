@@ -46,7 +46,7 @@ public class CircleView extends View {
 
         int centerX = getWidth() / 2;
         int centerY = getHeight() / 2;
-        int radius = 10; // 원의 반지름
+        int radius = 15; // 원의 반지름
 
         for (int i = 0; i < circleColors.size(); i++) {
             paint.setColor(circleColors.get(i));
