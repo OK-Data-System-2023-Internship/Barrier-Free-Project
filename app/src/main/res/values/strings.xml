@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TestProject</string>
+    <string name="app_name">드로잉보드</string>
     <string name="prediction">Prediction</string>
     <string name="probability">Probability</string>
     <string name="timecost">Timecost</string>
