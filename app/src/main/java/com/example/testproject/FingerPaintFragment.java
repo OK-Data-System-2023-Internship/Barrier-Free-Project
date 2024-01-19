@@ -1,23 +1,21 @@
 package com.example.testproject;
 
-import android.animation.ObjectAnimator;
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.viewbinding.ViewBinding;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.Animation;
-import android.view.animation.TranslateAnimation;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.example.testproject.classifier.Classifier;
 import com.example.testproject.classifier.Recognition;
@@ -27,13 +25,15 @@ interface VoidFunction {
     void execute(int drawingNum);
 }
 public class FingerPaintFragment extends Fragment {
+    private boolean isLoginActivity = true;
+
     private FingerPaintView fingerPaintView;
     private Classifier classifier;
     private boolean isDrawingMode = false;
     private VoidFunction drawingCallback;
     private MediaPlayer mediaPlayer;
 
-    public FingerPaintFragment(Classifier classifier, VoidFunction drawingCallback) {
+    public FingerPaintFragment() {
         // Required empty public constructor
         this.classifier = classifier;
         this.drawingCallback = drawingCallback;
@@ -57,6 +57,14 @@ public class FingerPaintFragment extends Fragment {
 
         this.fingerPaintView = view.findViewById(R.id.fpv_paint);
         initView(view);
+
+        // 로그인페이지에서 드로잉보드를 활성화 시켰다면,
+        // 이후 화면에서도 자동으로 활성화시킴.
+        Button btnDrawingMode = view.findViewById(R.id.btn_drawing_mode);
+        boolean status = readLoginStatus();
+        if(!status){
+            btnDrawingMode.performClick();
+        }
 
         return view;
     }
@@ -139,4 +147,13 @@ public class FingerPaintFragment extends Fragment {
         return result;
     }
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
+
+
+    // isLoggedIn 변수를 데이터베이스에서 읽는 메소드
+    private boolean readLoginStatus() {
+        // 데이터베이스에서 isLoggedIn 값을 읽어오는 코드 작성
+        // 예를 들어, SharedPreferences를 사용하여 읽을 수 있습니다.
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("login", MODE_PRIVATE);
+        return sharedPreferences.getBoolean("isLogin", false);
+    }
 }

@@ -13,6 +13,8 @@ import android.widget.Button;
 import com.example.testproject.classifier.Classifier;
 
 public class MainActivity extends AppCompatActivity {
+
+
     private Classifier classifier;
     private ActivityMainBinding binding;
     private Button button;
@@ -41,6 +43,9 @@ public class MainActivity extends AppCompatActivity {
         mediaplay = MediaPlayer.create(MainActivity.this, R.raw.main_init);
 
         FingerPaintFragment fingerPaintFragment = new FingerPaintFragment(classifier, (int drawingNum) -> {
+
+
+
 //            switch(drawingNum) {
                 // 모든 case를 확인하여, case3만 출력하는 문제.
                 // case에 해당하는 동작 후 종료하기 위해
@@ -68,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
                     .add(R.id.finger_paint_fragment_container, fingerPaintFragment)
                     .commit();
         }
+
     }
 
     @Override
