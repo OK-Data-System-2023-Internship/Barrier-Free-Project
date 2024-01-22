@@ -25,7 +25,7 @@ interface VoidFunction {
     void execute(int drawingNum);
 }
 public class FingerPaintFragment extends Fragment {
-    private boolean isLoginActivity = true;
+//    private boolean isLoginPage = false;
 
     private FingerPaintView fingerPaintView;
     private Classifier classifier;
@@ -58,13 +58,20 @@ public class FingerPaintFragment extends Fragment {
         this.fingerPaintView = view.findViewById(R.id.fpv_paint);
         initView(view);
 
-        // 로그인페이지에서 드로잉보드를 활성화 시켰다면,
-        // 이후 화면에서도 자동으로 활성화시킴.
-        Button btnDrawingMode = view.findViewById(R.id.btn_drawing_mode);
-        boolean status = readLoginStatus();
-        if(!status){
-            btnDrawingMode.performClick();
-        }
+//         로그인페이지에서 드로잉보드를 활성화 시켰다면,
+//         이후 화면에서도 자동으로 활성화시킴.
+//
+//        Button btnDrawingMode = view.findViewById(R.id.btn_drawing_mode);
+//        isLoginPage = readLoginStatus();
+//        Log.v(LOG_TAG, "33333333 >>>>>>>>>> " + String.valueOf(isLoginPage));
+//        if(!isLoginPage){
+//            btnDrawingMode.performClick();
+//        }
+//        Log.v(LOG_TAG, "444444444 >>>>>>>>>> " + String.valueOf(isLoginPage));
+//        clearSaved();       // 저장된거 삭
+//        Log.v(LOG_TAG, "55555555 >>>>>>>>>> " + String.valueOf(isLoginPage));
+
+
 
         return view;
     }
@@ -149,11 +156,17 @@ public class FingerPaintFragment extends Fragment {
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
 
 
-    // isLoggedIn 변수를 데이터베이스에서 읽는 메소드
-    private boolean readLoginStatus() {
-        // 데이터베이스에서 isLoggedIn 값을 읽어오는 코드 작성
-        // 예를 들어, SharedPreferences를 사용하여 읽을 수 있습니다.
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("login", MODE_PRIVATE);
-        return sharedPreferences.getBoolean("isLogin", false);
-    }
+//    // isLoggedIn 변수를 데이터베이스에서 읽는 메소드
+//    private boolean readLoginStatus() {
+//        // 데이터베이스에서 isLoggedIn 값을 읽어오는 코드 작성
+//        // 예를 들어, SharedPreferences를 사용하여 읽을 수 있습니다.
+//        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("login", MODE_PRIVATE);
+//        return sharedPreferences.getBoolean("isLogin", false);
+//    }
+//
+//    private void clearSaved(){
+//        SharedPreferences sharedPreferences = getContext().getSharedPreferences("login", MODE_PRIVATE);
+//        SharedPreferences.Editor editor = sharedPreferences.edit();
+//        editor.clear();
+//    }
 }

@@ -15,7 +15,7 @@ import android.widget.LinearLayout;
 import com.example.testproject.classifier.Classifier;
 
 public class LoginActivity  extends AppCompatActivity {
-    private boolean isLogin = true;
+//    private boolean isLogin = true;
 
     private Classifier classifier;
     private ActivityLoginBinding binding;
@@ -40,14 +40,17 @@ public class LoginActivity  extends AppCompatActivity {
         container = findViewById(R.id.container);
         initClassifier();
 
+
+//        Log.v(LOG_TAG, "111111 >>>>>>>>>> " + String.valueOf(isLogin));
         /* 드로잉 보드가 켜졌습니다. 비밀번호를 입력해 주세요 */
         MediaPlayer mediaPlayer = MediaPlayer.create(LoginActivity.this, R.raw.login_init);
 
         FingerPaintFragment fingerPaintFragment = new FingerPaintFragment(classifier, (int drawingNum) -> {
             if(++loginCnt >= 6){
                 // 로그인 페이지 여부를 저장함.
-                isLogin = false;
-                saveLoginStatus(isLogin);
+//                isLogin = false;
+//                saveLoginStatus(isLogin);
+//                Log.v(LOG_TAG, "222222 >>>>>>>>>> " + String.valueOf(isLogin));
 
                 changeIntent(MainActivity.class);
             }
@@ -74,12 +77,14 @@ public class LoginActivity  extends AppCompatActivity {
         // classifier.close();
     }
 
-    private void saveLoginStatus(boolean isLogin) {
-        // 데이터베이스에 접근하여 isLoggedIn 값을 저장하는 코드 작성
-        // 예를 들어, SharedPreferences를 사용하여 저장할 수 있습니다.
-        SharedPreferences sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean("isLogin", isLogin);
-        editor.apply();
-    }
+//    private void saveLoginStatus(boolean isLogin) {
+//        // 데이터베이스에 접근하여 isLoggedIn 값을 저장하는 코드 작성
+//        // 예를 들어, SharedPreferences를 사용하여 저장할 수 있습니다.
+//        SharedPreferences sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
+//        SharedPreferences.Editor editor = sharedPreferences.edit();
+//        editor.putBoolean("isLogin", isLogin);
+//        editor.apply();
+//    }
+
+
 }

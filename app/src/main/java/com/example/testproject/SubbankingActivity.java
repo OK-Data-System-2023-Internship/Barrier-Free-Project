@@ -43,6 +43,10 @@ public class SubbankingActivity extends AppCompatActivity {
         binding = ActivitySubbankingBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        /* 은행을 선택해주세요 */
+        MediaPlayer mediaPlayer = MediaPlayer.create(SubbankingActivity.this, R.raw.subbanking_create);
+        mediaPlayer.start();
+
         initClassifier();
 
         // Bottom Sheet를 표시하려면 이 코드를 호출합니다
@@ -81,10 +85,6 @@ public class SubbankingActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        /* 은행을 선택해주세요 */
-        MediaPlayer mediaPlayer = MediaPlayer.create(SubbankingActivity.this, R.raw.subbanking_create);
-        mediaPlayer.start();
 
     }
 
